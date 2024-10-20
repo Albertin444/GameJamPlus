@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13ae2608a9f91046a59da56cb9af83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2634997600670755301, guid: bc6550823b626ec408c3be0a1967d98a, type: 3}
+  target: {fileID: 8855212926734658243, guid: bc6550823b626ec408c3be0a1967d98a, type: 3}
   velocidad: 0
   distance: 0
 --- !u!54 &9016783758686898149

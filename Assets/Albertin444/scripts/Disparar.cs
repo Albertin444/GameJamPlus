@@ -26,11 +26,10 @@ public class Disparar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Activar==true){
-            transform.LookAt(target.transform);
-        }
-        
         Activar=rango_disparo.GetComponent<rango_disparo>().Activar;
+        transform.LookAt(target.transform);
+        
+        
     }
 
     public void disparar(){
