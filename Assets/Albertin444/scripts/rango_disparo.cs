@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,13 +17,20 @@ public class rango_disparo : MonoBehaviour
     {
         
     }
-    private void OnTriggerStay(Collider colision){
+    private void OnTriggerEnter(Collider colision){
 
-        if(colision.tag=="Osti"){
+        if(colision.tag=="Player"){
+
             Activar=true;
         }
-        else{
+        
+    }
+    private void OnTriggerExit(Collider colision){
+
+        if(colision.tag=="Player"){
             Activar=false;
         }
     }
+    
+    
 }
