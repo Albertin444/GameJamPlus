@@ -28,7 +28,10 @@ namespace GinjaGaming.FinalCharacterController
         public float gravity = 25f;
         public float terminalVelocity = 50f;
         public float jumpSpeed = 0.8f;
+        public float secondJumpSpeed = 1.5f;
         public float movingThreshold = 0.01f;
+        private int _jumpCount = 0;
+        public int maxJumpCount = 2;
 
         [Header("Animation")]
         public float playerModelRotationSpeed = 10f;
@@ -121,13 +124,29 @@ namespace GinjaGaming.FinalCharacterController
 
             _verticalVelocity -= gravity * Time.deltaTime;
 
+            // Reset the jump count when grounded
             if (isGrounded && _verticalVelocity < 0)
-                _verticalVelocity = -_antiBump;
-
-            if (_playerLocomotionInput.JumpPressed && isGrounded)
             {
-                _verticalVelocity += Mathf.Sqrt(jumpSpeed * 3 * gravity);
+                _verticalVelocity = -_antiBump;
+                _jumpCount = 0;  // Reset jump count when grounded
+            }
+
+            // Allow jumping if jump count is less than maxJumpCount
+            if (_playerLocomotionInput.JumpPressed && _jumpCount < maxJumpCount)
+            {
+                if (_jumpCount == 0)
+                {
+                    // First jump, use normal jump speed
+                    _verticalVelocity = Mathf.Sqrt(jumpSpeed * 3 * gravity);
+                }
+                else if (_jumpCount == 1)
+                {
+                    // Second jump, use higher jump speed
+                    _verticalVelocity = Mathf.Sqrt(secondJumpSpeed * 3 * gravity);
+                }
+
                 _jumpedLastFrame = true;
+                _jumpCount++;  // Increment jump count
             }
 
             if (_playerState.IsStateGroundedState(_lastMovementState) && !isGrounded)
@@ -141,6 +160,7 @@ namespace GinjaGaming.FinalCharacterController
                 _verticalVelocity = -1f * Mathf.Abs(terminalVelocity);
             }
         }
+
 
         private void HandleLateralMovement()
         {
