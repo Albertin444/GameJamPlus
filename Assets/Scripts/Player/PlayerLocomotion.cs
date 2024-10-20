@@ -33,7 +33,7 @@ namespace GameJamPlus.FinalCharacterController
         public void OnMovement(InputAction.CallbackContext context)
         {
            MovementInput = context.ReadValue<Vector2>();
-            print(MovementInput);
+            //print(MovementInput);
         }
 
         public void OnLook(InputAction.CallbackContext context)
