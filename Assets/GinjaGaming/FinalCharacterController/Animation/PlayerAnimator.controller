@@ -9,7 +9,7 @@ BlendTree:
   m_Name: Walking
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -6206981513316247533, guid: c346a9e2503cda64ba4698db6aa5e707,
+    m_Motion: {fileID: -203655887218126122, guid: a8f1ce7cafd566447bc1d6a5f61e8fb4,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
@@ -192,7 +192,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 7301913237523659039}
-    m_Position: {x: 297.94507, y: 120.24048, z: 0}
+    m_Position: {x: 300, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4429230119742470762}
     m_Position: {x: 550, y: 240, z: 0}
@@ -817,7 +817,7 @@ BlendTree:
   m_Name: Idle
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -6206981513316247533, guid: c346a9e2503cda64ba4698db6aa5e707,
+    m_Motion: {fileID: -203655887218126122, guid: a8f1ce7cafd566447bc1d6a5f61e8fb4,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
@@ -1087,7 +1087,7 @@ BlendTree:
   m_Name: Run
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -6206981513316247533, guid: c346a9e2503cda64ba4698db6aa5e707,
+    m_Motion: {fileID: -203655887218126122, guid: a8f1ce7cafd566447bc1d6a5f61e8fb4,
       type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
