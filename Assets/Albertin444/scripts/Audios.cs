@@ -11,14 +11,13 @@ public class Audios : MonoBehaviour
     public AudioSource Gema6;
     public AudioSource Gema7;
 
-
-
+     
     // Start is called before the first frame update
     void Start()
     {
         Aliniciar.Play();
     }
-
+     
     // Update is called once per frame
 
     public void Audio_primer_enemigo(){
