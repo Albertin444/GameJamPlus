@@ -51,7 +51,7 @@ namespace GinjaGaming.FinalCharacterController
             actionHashes = new int[] { isGatheringHash };
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             UpdateAnimationState();
         }

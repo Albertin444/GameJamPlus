@@ -133,26 +133,20 @@ namespace GinjaGaming.FinalCharacterController
 
             // Allow jumping if jump count is less than maxJumpCount
             if (_playerLocomotionInput.JumpPressed && _jumpCount < maxJumpCount)
-            {
-                if (_jumpCount == 0)
-                {
-                    // First jump, use normal jump speed
-                    _verticalVelocity = Mathf.Sqrt(jumpSpeed * 3 * gravity);
-                }
-                else if (_jumpCount == 1)
-                {
-                    // Second jump, use higher jump speed
-                    _verticalVelocity = Mathf.Sqrt(secondJumpSpeed * 3 * gravity);
-                }
-
+            {   
+                Debug.Log("sisas");
+                _verticalVelocity = Mathf.Sqrt((_jumpCount == 0 ? jumpSpeed : secondJumpSpeed) * 3 * gravity);
+                _playerState.SetPlayerMovementState(PlayerMovementState.Jumping);
+                //_jumpedLastFrame = false;
+                
                 _jumpedLastFrame = true;
                 _jumpCount++;  // Increment jump count
             }
 
-            if (_playerState.IsStateGroundedState(_lastMovementState) && !isGrounded)
-            {
-                _verticalVelocity += _antiBump;
-            }
+            // if (_playerState.IsStateGroundedState(_lastMovementState) && !isGrounded)
+            // {
+            //     _verticalVelocity += _antiBump;
+            // }
 
             // Clamp at terminal velocity
             if (Mathf.Abs(_verticalVelocity) > Mathf.Abs(terminalVelocity))
@@ -291,9 +285,9 @@ namespace GinjaGaming.FinalCharacterController
         {
             Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - _characterController.radius, transform.position.z);
 
-            bool grounded = Physics.CheckSphere(spherePosition, _characterController.radius, _groundLayers, QueryTriggerInteraction.Ignore);
+            //bool grounded = Physics.CheckSphere(spherePosition, _characterController.radius, _groundLayers, QueryTriggerInteraction.Ignore);
 
-            return grounded;
+            return _characterController.isGrounded;
         }
 
         private bool IsGroundedWhileAirborne()
