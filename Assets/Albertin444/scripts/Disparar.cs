@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Disparar : MonoBehaviour
 {
+    public Sonidos sonidos;
     public float velocidad=10;
     public float delay;
 
@@ -35,6 +36,7 @@ public class Disparar : MonoBehaviour
     public void disparar(){
         if(Activar==true){
             Instantiate(bala,spawer.transform.position,transform.rotation).GetComponent<Bala>().target=gameObject;
+            sonidos.Audio_disparos_fantasmales();
         }
         
     }
