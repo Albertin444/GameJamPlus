@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class caer_nivel : MonoBehaviour
 {
+    public static caer_nivel instance;
     public GameObject Chekpoint;
     public UIController UIController;
     public Sonidos SOnidos;
     public float ResetearenY=-500;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         
@@ -22,15 +28,18 @@ public class caer_nivel : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Obstaculo"))
-        {
-            muerte();
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+       
+    //    {
+    //        muerte();
+    //    }
 
-    private void muerte(){
+       
+
+    //}
+
+    public void muerte(){
         transform.position=Chekpoint.transform.position;
         UIController.muertes++;
         SOnidos.Audio_muerte();
