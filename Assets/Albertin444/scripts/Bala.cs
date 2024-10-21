@@ -37,4 +37,13 @@ public class Bala : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            caer_nivel.instance.muerte();
+            Destroy(gameObject,1f);
+        }
+    }
+
 }
