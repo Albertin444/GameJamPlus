@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: dfb0ae3c3f4417f4f9fc968feb177efe
+guid: 1bdd346a6f981094185de207a557f43d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Textura Masion
+    second: {fileID: 2100000, guid: 7dd9300ec82cb214fb4da2eaac8f9b15, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
