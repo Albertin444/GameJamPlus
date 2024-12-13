@@ -82,13 +82,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1596857872694715240}
   - component: {fileID: 8683050309434037741}
-  - component: {fileID: 4695923932146353395}
-  - component: {fileID: 4069718720795339439}
-  - component: {fileID: 6098636911557726317}
-  - component: {fileID: 342333236758754877}
-  - component: {fileID: 6834046096560671949}
-  - component: {fileID: 2744506428303970126}
-  - component: {fileID: 2551033391331385396}
   m_Layer: 6
   m_Name: Oso Fantasma
   m_TagString: Player
@@ -134,137 +127,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!143 &4695923932146353395
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117533409888795090}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 4.74
-  m_Radius: 0.225
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.01
-  m_MinMoveDistance: 0.00001
-  m_Center: {x: 0, y: 1.2, z: 0}
---- !u!114 &4069718720795339439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117533409888795090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19bdf25b8aaee6f4eb5183b1290dacea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characterController: {fileID: 4695923932146353395}
-  _playerCamera: {fileID: 7256766983045824413}
-  walkAcceleration: 100
-  walkSpeed: 90
-  runAcceleration: 120
-  runSpeed: 100
-  sprintAcceleration: 120
-  sprintSpeed: 150
-  inAirAcceleration: 50
-  drag: 40
-  inAirDrag: 20
-  gravity: 60
-  terminalVelocity: 80
-  jumpSpeed: 15
-  secondJumpSpeed: 10
-  movingThreshold: 0.01
-  maxJumpCount: 2
-  playerModelRotationSpeed: 10
-  rotateToTargetTime: 0.68
-  lookSenseH: 0.1
-  lookSenseV: 0.1
-  lookLimitV: 70
-  _groundLayers:
-    serializedVersion: 2
-    m_Bits: 1
---- !u!114 &6098636911557726317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117533409888795090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490eb3a69b8a8cf4b8d8cf676effd1b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdToSprint: 0
---- !u!114 &342333236758754877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117533409888795090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df51a1f55ede10459f5411060f1667f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <CurrentPlayerMovementState>k__BackingField: 0
---- !u!114 &6834046096560671949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117533409888795090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d015a2dfbd3791849a8c184d57c68c14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 8683050309434037741}
-  locomotionBlendSpeed: 4
---- !u!114 &2744506428303970126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117533409888795090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 208de3d86c1102d4c87ae4a2479f24a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _virtualCamera: {fileID: 1796605344677605772}
-  _cameraZoomSpeed: 0.1
-  _cameraMinZoom: 1
-  _cameraMaxZoom: 5
---- !u!114 &2551033391331385396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117533409888795090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5e1f0ea1187994c8603b613b63e2b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5855354720801142121
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,8 +156,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5855354720801142121}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15973288, y: -0.008253694, z: 0.0013355836, w: 0.9871249}
-  m_LocalPosition: {x: 0.3999989, y: 11.600001, z: -9.951668}
+  m_LocalRotation: {x: 0.15973286, y: -0.008253529, z: 0.0013355551, w: 0.9871249}
+  m_LocalPosition: {x: 0.399999, y: 11.599998, z: -9.95166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

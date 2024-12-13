@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 003fdb5442deecd40a25fce3201b0901
+guid: 0d01db9e761c9cb4781717d1dfc02f2a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: 
   wrapperClassName: 
-  wrapperCodeNamespace: GinjaGaming.FinalCharacterController
+  wrapperCodeNamespace: 
