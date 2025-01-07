@@ -11,20 +11,26 @@ namespace GinjaGaming.FinalCharacterController
     {
         #region Class Variables
         public Vector2 ScrollInput { get; private set; }
+        public Vector2 LookInput { get; private set; }
 
         [SerializeField] private CinemachineVirtualCamera _virtualCamera;
         [SerializeField] private float _cameraZoomSpeed = 0.1f;
         [SerializeField] private float _cameraMinZoom = 1f;
         [SerializeField] private float _cameraMaxZoom = 5f;
+        [SerializeField] private float _cameraRotationSpeed = 2f;
 
         private Cinemachine3rdPersonFollow _thirdPersonFollow;
+        private Transform _cameraTransform;
+        private float _verticalAngle = 0f;
         #endregion
 
         #region Startup
         private void Awake()
         {
             _thirdPersonFollow = _virtualCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
+            _cameraTransform = _virtualCamera.transform;
         }
+
         private void OnEnable()
         {
             if (PlayerInputManager.Instance?.PlayerControls == null)
@@ -54,11 +60,24 @@ namespace GinjaGaming.FinalCharacterController
         private void Update()
         {
             _thirdPersonFollow.CameraDistance = Mathf.Clamp(_thirdPersonFollow.CameraDistance + ScrollInput.y, _cameraMinZoom, _cameraMaxZoom);
+            RotateCamera();
         }
 
         private void LateUpdate()
         {
             ScrollInput = Vector2.zero;
+        }
+
+        private void RotateCamera()
+        {
+            if (LookInput != Vector2.zero)
+            {
+                float yaw = LookInput.x * _cameraRotationSpeed;
+                float pitch = -LookInput.y * _cameraRotationSpeed;
+
+                _verticalAngle = Mathf.Clamp(_verticalAngle + pitch, -80f, 80f);
+                _cameraTransform.localRotation = Quaternion.Euler(_verticalAngle, _cameraTransform.eulerAngles.y + yaw, 0f);
+            }
         }
         #endregion
 
@@ -70,6 +89,11 @@ namespace GinjaGaming.FinalCharacterController
 
             Vector2 scrollInput = context.ReadValue<Vector2>();
             ScrollInput = -1f * scrollInput.normalized * _cameraZoomSpeed;
+        }
+
+        public void OnLookCamera(InputAction.CallbackContext context)
+        {
+            LookInput = context.ReadValue<Vector2>();
         }
         #endregion
     }
