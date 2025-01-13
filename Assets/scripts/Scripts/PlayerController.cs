@@ -8,6 +8,7 @@ namespace GinjaGaming.FinalCharacterController
     [DefaultExecutionOrder(-1)]
     public class PlayerController : MonoBehaviour
     {
+
         #region Class Variables
         [Header("Components")]
         [SerializeField] private CharacterController _characterController;
@@ -32,6 +33,8 @@ namespace GinjaGaming.FinalCharacterController
         public float movingThreshold = 0.01f;
         private int _jumpCount = 0;
         public int maxJumpCount = 2;
+        public PlayerController instance;
+
 
         [Header("Animation")]
         public float playerModelRotationSpeed = 10f;
@@ -274,7 +277,7 @@ namespace GinjaGaming.FinalCharacterController
             return lateralVelocity.magnitude > movingThreshold;
         }
 
-        private bool IsGrounded()
+        public bool IsGrounded()
         {
             bool grounded = _playerState.InGroundedState() ? IsGroundedWhileGrounded() : IsGroundedWhileAirborne();
 
