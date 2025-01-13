@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class estanteriadecierre : MonoBehaviour
+public class EstanteriaDeCierre : MonoBehaviour
 {
     public bool Activar = false; // Controla el movimiento
     public float distancia = 2f; // Distancia a mover
@@ -13,6 +13,9 @@ public class estanteriadecierre : MonoBehaviour
     private bool avanzando = true; // Controla la dirección del movimiento
 
     private Animator animator; // Referencia al Animator
+
+    public List<ParticleSystem> particulasAtras; // Lista de partículas al avanzar
+    public List<ParticleSystem> particulasDeFrente;   // Lista de partículas al retroceder
 
     void Start()
     {
@@ -26,24 +29,29 @@ public class estanteriadecierre : MonoBehaviour
         {
             Debug.LogError("No se encontró un componente Animator en el objeto.");
         }
+
+        // Detenemos las partículas por defecto
+        DetenerParticulas(particulasDeFrente);
+        DetenerParticulas(particulasAtras);
     }
 
     void Update()
     {
         if (Activar)
         {
-            // Realiza el movimiento hacia adelante y hacia atrás
             if (avanzando)
             {
                 transform.position = Vector3.MoveTowards(transform.position, posicionObjetivo, velocidad * Time.deltaTime);
 
-                // Activa la animación "de frente"
                 if (animator != null)
                 {
                     animator.Play("frente");
                 }
 
-                // Cambia de dirección al llegar al destino
+                // Activa partículas al avanzar
+                ActivarParticulas(particulasDeFrente);
+                DetenerParticulas(particulasAtras);
+
                 if (Vector3.Distance(transform.position, posicionObjetivo) < 0.01f)
                 {
                     avanzando = false;
@@ -53,13 +61,15 @@ public class estanteriadecierre : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, posicionInicial, velocidad * Time.deltaTime);
 
-                // Activa la animación "atrás"
                 if (animator != null)
                 {
                     animator.Play("atras");
                 }
 
-                // Cambia de dirección al llegar al origen
+                // Activa partículas al retroceder
+                ActivarParticulas(particulasAtras);
+                DetenerParticulas(particulasDeFrente);
+
                 if (Vector3.Distance(transform.position, posicionInicial) < 0.01f)
                 {
                     avanzando = true;
@@ -71,7 +81,39 @@ public class estanteriadecierre : MonoBehaviour
             // Si se desactiva, regresa a la posición inicial
             transform.position = Vector3.MoveTowards(transform.position, posicionInicial, velocidad * Time.deltaTime);
 
-            animator.Play("quit");
+            if (animator != null)
+            {
+                animator.Play("quit");
+            }
+
+            // Detenemos todos los sistemas de partículas
+            DetenerParticulas(particulasDeFrente);
+            DetenerParticulas(particulasAtras);
+        }
+    }
+
+    // Métodos para activar y detener listas de partículas
+    private void ActivarParticulas(List<ParticleSystem> particulas)
+    {
+        foreach (var particula in particulas)
+        {
+            if (particula != null && !particula.isPlaying)
+            {
+                particula.Play();
+            }
+        }
+    }
+
+    private void DetenerParticulas(List<ParticleSystem> particulas)
+    {
+        foreach (var particula in particulas)
+        {
+            if (particula != null && particula.isPlaying)
+            {
+                particula.Stop();
+            }
         }
     }
 }
+
+
