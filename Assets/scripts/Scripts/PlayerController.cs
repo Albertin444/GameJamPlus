@@ -15,6 +15,7 @@ namespace GinjaGaming.FinalCharacterController
         [SerializeField] private Camera _playerCamera;
         public float RotationMismatch { get; private set; } = 0f;
         public bool IsRotatingToTarget { get; private set; } = false;
+        public static PlayerController instance { get; private set; }
 
         [Header("Base Movement")]
         public float walkAcceleration = 25f;
@@ -33,7 +34,7 @@ namespace GinjaGaming.FinalCharacterController
         public float movingThreshold = 0.01f;
         private int _jumpCount = 0;
         public int maxJumpCount = 2;
-        public PlayerController instance;
+       
 
 
         [Header("Animation")]
@@ -72,6 +73,7 @@ namespace GinjaGaming.FinalCharacterController
 
             _antiBump = sprintSpeed;
             _stepOffset = _characterController.stepOffset;
+            instance = this;
         }
         #endregion
 
