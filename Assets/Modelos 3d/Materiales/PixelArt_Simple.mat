@@ -8,12 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PixelArt_Simple
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 14002, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _WINDQUALITY_NONE
+  m_InvalidKeywords:
   - _SPECULARHIGHLIGHTS_OFF
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -48,6 +49,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
+    - _ExtraTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: a690f9f22204fe34ab2f95dfa8d7a713, type: 3}
         m_Scale: {x: 2, y: 2}
@@ -68,6 +73,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SubsurfaceTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -84,6 +93,8 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _BillboardKwToggle: 0
+    - _BillboardShadowFade: 0.5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -99,8 +110,10 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _HueVariationKwToggle: 0
     - _Metallic: 0
     - _Mode: 0
+    - _NormalMapKwToggle: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.0444
     - _QueueOffset: 0
@@ -110,15 +123,21 @@ Material:
     - _SpecularHighlights: 0
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
+    - _SubsurfaceIndirect: 0.25
+    - _SubsurfaceKwToggle: 0
     - _Surface: 0
+    - _TwoSided: 2
     - _UVSec: 0
+    - _WindQuality: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0.3665092, b: 0.7075472, a: 1}
+    - _HueVariationColor: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SubsurfaceColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1431199223468038200
 MonoBehaviour:
