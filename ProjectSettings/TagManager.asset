@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Colletable
   - Obstaculo
+  - checkpoint
   layers:
   - Default
   - TransparentFX

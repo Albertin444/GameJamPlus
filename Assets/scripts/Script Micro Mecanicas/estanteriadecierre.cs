@@ -7,15 +7,17 @@ public class EstanteriaDeCierre : MonoBehaviour
     public bool Activar = false; // Controla el movimiento
     public float distancia = 2f; // Distancia a mover
     public float velocidad = 2f; // Velocidad del movimiento
+    public float delay = 1f; // Tiempo de espera antes de ejecutar el movimiento
 
     private Vector3 posicionInicial; // Guarda la posición inicial
     private Vector3 posicionObjetivo; // Calcula la posición destino
     private bool avanzando = true; // Controla la dirección del movimiento
+    private bool enEspera = false; // Controla si está en el periodo de espera
 
     private Animator animator; // Referencia al Animator
 
     public List<ParticleSystem> particulasAtras; // Lista de partículas al avanzar
-    public List<ParticleSystem> particulasDeFrente;   // Lista de partículas al retroceder
+    public List<ParticleSystem> particulasDeFrente; // Lista de partículas al retroceder
 
     void Start()
     {
@@ -33,10 +35,18 @@ public class EstanteriaDeCierre : MonoBehaviour
         // Detenemos las partículas por defecto
         DetenerParticulas(particulasDeFrente);
         DetenerParticulas(particulasAtras);
+
+        // Inicia el delay si Activar está habilitado al principio
+        if (Activar)
+        {
+            StartCoroutine(EsperarYActivarMovimiento());
+        }
     }
 
     void Update()
     {
+        if (enEspera) return; // Si está en espera, no ejecuta el movimiento
+
         if (Activar)
         {
             if (avanzando)
@@ -92,6 +102,13 @@ public class EstanteriaDeCierre : MonoBehaviour
         }
     }
 
+    private IEnumerator EsperarYActivarMovimiento()
+    {
+        enEspera = true; // Se activa el estado de espera
+        yield return new WaitForSeconds(delay); // Espera el tiempo especificado
+        enEspera = false; // Desactiva el estado de espera
+    }
+
     // Métodos para activar y detener listas de partículas
     private void ActivarParticulas(List<ParticleSystem> particulas)
     {
@@ -114,6 +131,13 @@ public class EstanteriaDeCierre : MonoBehaviour
             }
         }
     }
+
+    public void ActivarConDelay()
+    {
+        if (!Activar)
+        {
+            Activar = true;
+            StartCoroutine(EsperarYActivarMovimiento());
+        }
+    }
 }
-
-

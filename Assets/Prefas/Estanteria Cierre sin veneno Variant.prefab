@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6699824821650029642
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252967634073940995, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745563074228451578, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_Name
+      value: Estanteria Cierre sin veneno Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717048824917445943, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211877886255188889, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 9.366041
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211877886255188889, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.7774687
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211877886255188889, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363092313710982814, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: velocidad
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434385148217492683, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3870930847920088710, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099695169379969515, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749943891586074576, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406530419248535795, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657705310351968531, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7963887839235960538, guid: 10c0306231674914bb7e72baff919c28,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 35
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 535643443136334340, guid: 10c0306231674914bb7e72baff919c28, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10c0306231674914bb7e72baff919c28, type: 3}
