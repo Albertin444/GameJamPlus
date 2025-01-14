@@ -4923,7 +4923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4cf8e2afb8ecc4f83bdcbb372883a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoDeVida: 0.8
+  tiempoDeVida: 1.2
 --- !u!1 &8812559985751867553
 GameObject:
   m_ObjectHideFlags: 0
