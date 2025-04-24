@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
     private float movementForce = 1f;
 
     [SerializeField]
-    private float maxSpeed = 5f;
+    private float maxSpeed = 5f; 
 
     [SerializeField]
     private float jumpForce = 5f;
