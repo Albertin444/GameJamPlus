@@ -4,30 +4,25 @@ using UnityEngine;
 
 public class characterAnimations : MonoBehaviour
 {
-    private Animator anim;
+    private Animator animator;
 
-    void Awake()
+    private void Awake()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     public void move(float speed)
     {
-        anim.SetFloat("Speed", speed);
+        animator.SetFloat("Speed", speed);  // Controla la BlendTree de caminata/carrera
     }
 
-    public void Attack1()
+    public void SetJumping(bool isJumping)
     {
-        anim.SetTrigger("Attack1");
+        animator.SetBool("isJumping", isJumping);  // Controla la animación de salto
     }
 
-    public void Attack2()
+    public void Jump()
     {
-        anim.SetTrigger("Attack2");
-    }
-
-    public void Attack3()
-    {
-        anim.SetTrigger("Attack3");
+        animator.SetTrigger("Jump");  // Si usas un trigger para la animación de salto
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,9 +9,9 @@ public class PlayerMove : MonoBehaviour
 
     private InputAction move;
     private InputAction run;
+    private InputAction jump;
 
     private Vector3 forceDirection;
-
     private Rigidbody rb;
 
     [SerializeField]
@@ -23,7 +23,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float maxSpeed = 5f;
 
+    [SerializeField]
+    private float jumpForce = 5f;
 
+    private bool isGrounded = true;
+    private bool wasGrounded = true;
 
     private characterAnimations playerAnimations;
 
@@ -35,59 +39,64 @@ public class PlayerMove : MonoBehaviour
             Debug.LogError("Rigidbody component is missing.");
         }
         playerAsset = new PlayerController();
-
         playerAnimations = GetComponentInChildren<characterAnimations>();
     }
-
-
 
     private void OnEnable()
     {
         move = playerAsset.PlayerControls.Move;
-        run = playerAsset.PlayerControls.Run; // Asigna la acción de correr del Input System
+        run = playerAsset.PlayerControls.Run;
+        jump = playerAsset.PlayerControls.Jump;
+
         playerAsset.PlayerControls.Enable();
+        jump.performed += ctx => TryJump();
+    }
+
+    private void OnDisable()
+    {
+        playerAsset.PlayerControls.Disable();
+        jump.performed -= ctx => TryJump();
     }
 
     private void FixedUpdate()
     {
         Vector2 input = move.ReadValue<Vector2>();
-
-        // Verifica si el jugador está corriendo
         bool isRunning = run.IsPressed();
 
-        // Calcula la dirección de movimiento basada en la cámara
-        float currentMovementForce = isRunning ? movementForce * 2f : movementForce; // Duplica la fuerza si corre
+        float currentMovementForce = isRunning ? movementForce * 2f : movementForce;
         forceDirection += input.x * GetCameraRight(playerCamera) * currentMovementForce;
         forceDirection += input.y * GetCameraForward(playerCamera) * currentMovementForce;
 
-        // Agrega fuerza al Rigidbody
         rb.AddForce(forceDirection, ForceMode.Impulse);
         forceDirection = Vector3.zero;
 
-        // Limita la velocidad horizontal
-        float currentMaxSpeed = isRunning ? maxSpeed * 2f : maxSpeed; // Duplica la velocidad máxima si corre
+        float currentMaxSpeed = isRunning ? maxSpeed * 2f : maxSpeed;
         Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         if (horizontalVelocity.sqrMagnitude > currentMaxSpeed * currentMaxSpeed)
         {
             rb.velocity = horizontalVelocity.normalized * currentMaxSpeed + Vector3.up * rb.velocity.y;
         }
 
-        // Actualiza las animaciones y la rotación
         UpdateAnimations(input, isRunning);
         LookAt();
     }
 
     private void UpdateAnimations(Vector2 input, bool isRunning)
     {
-        float speed = (input.sqrMagnitude > 0.1f) ? (isRunning ? 1f : 0.5f) : 0f;
-
-        if (playerAnimations != null)
+        if (!isGrounded)
         {
-            playerAnimations.move(speed); // Correct method call
+            // Si el jugador estÃ¡ en el aire, desactivamos BlendTree y activamos la animaciÃ³n de salto
+            playerAnimations?.SetJumping(true);
+            playerAnimations?.move(0);  // Para que el personaje no haga movimientos de caminata o carrera
+            return;
         }
 
-    }
+        // En el suelo, desactivamos la animaciÃ³n de salto y activamos el BlendTree
+        playerAnimations?.SetJumping(false);
 
+        float speed = (input.sqrMagnitude > 0.1f) ? (isRunning ? 1f : 0.5f) : 0f;
+        playerAnimations?.move(speed);
+    }
 
     private void LookAt()
     {
@@ -104,7 +113,6 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-
     private Vector3 GetCameraForward(Camera playerCamera)
     {
         Vector3 forward = playerCamera.transform.forward;
@@ -119,7 +127,6 @@ public class PlayerMove : MonoBehaviour
         return right.normalized;
     }
 
-    // Method to snap the player's body to a specific position and/or rotation
     public void SnapTo(Vector3 targetPosition, Quaternion targetRotation)
     {
         rb.position = targetPosition;
@@ -129,7 +136,24 @@ public class PlayerMove : MonoBehaviour
 
         if (playerAnimations != null)
         {
-            playerAnimations.move(0); // Use the PlayerAnimations method
+            playerAnimations.move(0);
+        }
+    }
+
+    private void TryJump()
+    {
+        if (isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false; // El personaje pasa al estado aÃ©reo
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.contacts[0].normal.y > 0.5f)
+        {
+            isGrounded = true; // El personaje vuelve a estar en el suelo
         }
     }
 }
