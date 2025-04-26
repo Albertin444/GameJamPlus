@@ -2,18 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
 
-public class estanteria_disparar : MonoBehaviour
+public class estanteria_disparar : Heredar_reinicios_rango
 {
-    public GameObject bala;
-    public Transform spamer;
-    public float fuerzaDisparo = 10f;  // Fuerza con la que se disparará la bala
-    public float velocidadExtra = 5f;  // Fuerza adicional para aumentar la velocidad del proyectil
+    [Header("Objetos Necesarios")]
 
-    public float velocidad_de_Animacion = 1f;// velocidad dee la animación
-    public float delayAntesDeAnimacion = 1f; // Tiempo de espera antes de iniciar la animación
-    private Animator animator;  // Referencia al componente Animator
+    [SerializeReference]
+    [Tooltip("Esta variable genera el Proyectil de la Script")]
+    private GameObject bala;
+
+    [SerializeReference]
+    [Tooltip("Esta variable se utiliza para el punto de creación del proyectil")]
+    private Transform spamer;
+
+    [Space(10)]
+    [Header("Datos")]
+
+    [SerializeReference]
+    [Tooltip("Fuerza con la que se disparará el Proyectil")]
+    [Min(1f)] // El valor minimo de la siguiente variable
+    private float fuerzaDisparo = 10f;
+
+    [SerializeReference]
+    [Tooltip("Fuerza adicional para aumentar la velocidad del proyectil")]
+    [Min(1f)] // El valor minimo de la siguiente variable
+    private float velocidadExtra = 5f;
+
+    [SerializeReference]
+    [Tooltip("Velocidad de la animación y creación del Proyectil")]
+    [Min(1f)] // El valor minimo de la siguiente variable
+    private float velocidad_de_Animacion = 1f;
+
+    [SerializeReference]
+    [Tooltip("Tiempo de espera antes de iniciar la animación")]
+    private float delayAntesDeAnimacion = 1f;
+
     private void Start()
     {
         // Obtener el componente Animator
@@ -23,7 +46,6 @@ public class estanteria_disparar : MonoBehaviour
         {
             animator.speed = velocidad_de_Animacion;
             animator.enabled = false; // Desactivar el Animator inicialmente
-            StartCoroutine(IniciarAnimacionConDelay());
         }
         else
         {
@@ -53,18 +75,9 @@ public class estanteria_disparar : MonoBehaviour
         }
     }
     // Corutina para iniciar la animación después de un delay
-    private IEnumerator IniciarAnimacionConDelay()
-    {
-        // Esperar el tiempo del delay
-        yield return new WaitForSeconds(delayAntesDeAnimacion);
 
-        // Activar el Animator para iniciar la animación
-        if (animator != null)
-        {
-            animator.enabled = true;
-        }
-    }
 }
+
 
 
 
