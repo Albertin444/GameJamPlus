@@ -16,15 +16,19 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField]
     private Camera playerCamera;
-
+    
     [SerializeField]
     private float movementForce = 1f;
-
+   
     [SerializeField]
     private float maxSpeed = 5f; 
 
     [SerializeField]
     private float jumpForce = 5f;
+
+    [SerializeField]
+    private float gravityMultiplier = 1f;
+
 
     private bool isGrounded = true;
     private bool wasGrounded = true;
@@ -40,6 +44,8 @@ public class PlayerMove : MonoBehaviour
         }
         playerAsset = new PlayerController();
         playerAnimations = GetComponentInChildren<characterAnimations>();
+
+        rb.useGravity = false;
     }
 
     private void OnEnable()
@@ -79,6 +85,16 @@ public class PlayerMove : MonoBehaviour
 
         UpdateAnimations(input, isRunning);
         LookAt();
+
+        rb.AddForce(Physics.gravity * gravityMultiplier, ForceMode.Acceleration);
+
+        if (move.ReadValue<Vector2>().sqrMagnitude < 0.01f)
+        {
+            Vector3 velocity = rb.velocity;
+            velocity.x *= 0.9f; // Frena suavemente en X
+            velocity.z *= 0.9f; // Frena suavemente en Z
+            rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
+        }
     }
 
     private void UpdateAnimations(Vector2 input, bool isRunning)
