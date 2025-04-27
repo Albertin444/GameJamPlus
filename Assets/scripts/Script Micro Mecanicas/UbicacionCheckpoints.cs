@@ -5,6 +5,7 @@ using UnityEngine;
 public class UbicacionCheckpoints : MonoBehaviour
 {
     public GameObject check; // Objeto que se posicionará en el checkpoint
+    public float Ejey_limit;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +17,8 @@ public class UbicacionCheckpoints : MonoBehaviour
 
             // Opcional: Rotar el objeto "check" para que coincida con la rotación del checkpoint
             check.transform.rotation = other.transform.rotation;
+
+            Ejey_limit= other.transform.position.y;
 
             Debug.Log("Checkpoint alcanzado y posición actualizada.");
         }

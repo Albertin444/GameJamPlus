@@ -151,9 +151,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922905838577688801}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.784, y: 1.2, z: 0.11300007}
-  m_LocalScale: {x: 0.018448336, y: 0.27672502, z: 0.005534501}
+  m_LocalScale: {x: 7.2513275, y: 8.366914, z: 8.366917}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5503360709131627216}
@@ -209,7 +209,7 @@ MonoBehaviour:
   fuerzaDisparo: 1
   velocidadExtra: 200
   velocidad_de_Animacion: 1
-  delayAntesDeAnimacion: 2
+  Tiempo_Vida_Bala: 5
 --- !u!65 &2932328339998369178
 BoxCollider:
   m_ObjectHideFlags: 0

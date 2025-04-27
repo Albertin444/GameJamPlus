@@ -34,17 +34,18 @@ public class estanteria_disparar : Heredar_reinicios_rango
     private float velocidad_de_Animacion = 1f;
 
     [SerializeReference]
-    [Tooltip("Tiempo de espera antes de iniciar la animación")]
-    private float delayAntesDeAnimacion = 1f;
+    [Tooltip("Tiempo de vida del Proyectil")]
+    [Min(1f)] // El valor minimo de la siguiente variable
+    private float Tiempo_Vida_Bala = 1f;
 
-    private void Start()
+    public override void Start()
     {
         // Obtener el componente Animator
-        animator = GetComponent<Animator>();
+        base.Start();
 
         if (animator != null)
         {
-            animator.speed = velocidad_de_Animacion;
+            animator.speed = velocidad_de_Animacion; //Para ponerle velocidad al aimator
             animator.enabled = false; // Desactivar el Animator inicialmente
         }
         else
@@ -56,6 +57,19 @@ public class estanteria_disparar : Heredar_reinicios_rango
     {
         // Instanciar la bala en el punto de disparo
         GameObject balaInstanciada = Instantiate(bala, spamer.position, spamer.rotation);
+
+        // Obtener el script Destroy_for_time de la bala instanciada
+        Destroy_for_time tiempo_bala = balaInstanciada.GetComponent<Destroy_for_time>();
+
+        if (tiempo_bala != null)
+        {
+            // PASO 2: Asignar el tiempo de vida deseado
+            tiempo_bala.tiempoDeVida = Tiempo_Vida_Bala;
+        }
+        else
+        {
+            Debug.LogWarning("La bala no tiene el script Destroy_for_time.");
+        }
 
         // Obtener el Rigidbody de la bala
         Rigidbody rb = balaInstanciada.GetComponent<Rigidbody>();

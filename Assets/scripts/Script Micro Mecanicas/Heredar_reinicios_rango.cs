@@ -24,8 +24,9 @@ public class Heredar_reinicios_rango : MonoBehaviour
     [Tooltip("Tiempo de espera antes de iniciar la animación")]
     private float delayAntesDeAnimacion = 1f;
 
-    public void Start()
+    public virtual void Start()
     {
+        // Obtener el componente Animator
         animator = GetComponent<Animator>();
     }
     private IEnumerator IniciarAnimacionConDelay(float delayAntesDeAnimacion)
@@ -47,12 +48,13 @@ public class Heredar_reinicios_rango : MonoBehaviour
         animator.Update(0);
         if (Activar == true)
         {
-
+            //Inicia nuevamente el funcionamiento de la script, tenga o no tenga delay
             StartCoroutine(IniciarAnimacionConDelay(delayAntesDeAnimacion));
         }
     }
     public virtual void apagar()
     {
+        //apaga el animator para pausarlo.
         animator.enabled = false;
     }
 }

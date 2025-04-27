@@ -11,4 +11,5 @@ public class Destroy_for_time : MonoBehaviour
         // Llama al método 'DestruirObjeto' después del tiempo especificado
         Destroy(gameObject, tiempoDeVida);
     }
+
 }
